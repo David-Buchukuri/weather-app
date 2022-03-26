@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(37, 36, 36);
+}
+
 * {
   margin: 0;
 }
@@ -8,6 +12,69 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.parent {
+  background-color: aliceblue;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.wrapper {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  /* height: 30vh; */
+  padding-bottom: 50vh;
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.dropdown-wrapper {
+  background-color: aqua;
+  padding-top: 50px;
+  height: 15vh;
+}
+
+.dropBtn {
+  /* margin-top: 50px; */
+  width: 350px;
+  background-color: #f1356d;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .card-down {
@@ -38,19 +105,6 @@
   }
 }
 
-.dropBtn {
-  width: 350px;
-
-  background-color: #f1356d;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-
-  box-sizing: border-box;
-}
-
 .arrows {
   background: none;
   transition: 0.8s;
@@ -70,7 +124,7 @@
 
 .App {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 5%;
   flex-wrap: wrap;
 }

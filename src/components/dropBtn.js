@@ -1,7 +1,7 @@
 import Card from "./card";
 import { useState } from "react";
 
-const DropBtn = ({ data }) => {
+const DropBtn = ({ data, fade }) => {
   const [open, setOpen] = useState(false);
   const [disabled, setDisabled] = useState();
   const [direction, setDirection] = useState("");
@@ -31,8 +31,14 @@ const DropBtn = ({ data }) => {
   };
 
   return (
-    <div className="dropBtn">
-      {console.log(direction, open)}
+    <div className={`dropBtn ${fade}`}>
+      <p>
+        {data.name} {data.main.temp}c {data.weather[0].description}
+      </p>
+      <img
+        src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+        alt=""
+      />
       <button
         style={{ transform: angle }}
         disabled={disabled}

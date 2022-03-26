@@ -1,64 +1,90 @@
 import "./App.css";
-import DropBtn from "./components/dropBtn";
-import { useEffect, useState } from "react";
-let array = [
-  { name: "toke", lastName: "buchukuri", age: "21", stack: "sql" },
-  { name: "dato", lastName: "buchukuri", age: "19", stack: "sern" },
-  { name: "guga", lastName: "gugadze", age: "99", stack: "c" },
-];
+// import useGetSetData from "./helper/getSetData";
+import { useState } from "react";
+import Button from "./components/button";
+import Dropbtn from "./components/dropBtn";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [city, setCity] = useState("");
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [curData, setCurData] = useState(null);
+  const [fade, setFade] = useState();
 
-  const fetchCur = () => {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=tbilisi&units=metric&appid=5f5fced40cc62d51499dacc3c0ca8151" //standard
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
+  const fetchCur = (location) => {
+    setTimeout(() => setCurData(null), 1000);
 
-  const fetchForcast = () => {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/onecall?lat=41.7151&lon=44.8271&units=metric&appid=5f5fced40cc62d51499dacc3c0ca8151" //onecall
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
+    setFade("fadeOut");
+    setError(null);
+    setLoading(true);
+    setTimeout(() => {
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=5f5fced40cc62d51499dacc3c0ca8151` //standard
+      )
+        .then((res) => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.json();
+        })
+        .then((res) => {
+          setLoading(false);
+          setCurData(res);
 
-  const fetchGeo = () => {
-    fetch(
-      "http://api.openweathermap.org/geo/1.0/direct?q=tbilisi&limit=1&appid=5f5fced40cc62d51499dacc3c0ca8151"
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
-
-  // const options = {weekday:'long',year:'numeric',month:'long',day:'numeric'}
-  // let t = new Date(1648112400 * 1000).toLocaleTimeString("en-US",options)
-  // console.log(t);
-
-  useEffect(() => {
-    let timeout = setTimeout(() => {
-      console.log(count);
+          console.log(res);
+        })
+        .catch((err) => {
+          setError(err.message);
+          setLoading(false);
+        })
+        .finally(() => setFade("fadeIn"));
     }, 2000);
+  };
 
-    return () => clearTimeout(timeout);
-  }, [count]);
-
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   return (
-    <div className="App">
-      {array.map((el, idx) => (
-        <div key={idx}>
-          <DropBtn data={el} />
-        </div>
-      ))}
+    <div className="parent">
+      <div className="wrapper">
+        {console.log(
+          new Date(1648112400 * 1000).toLocaleTimeString("en-US", options)
+        )}
 
-      <button onClick={fetchCur}>fetch current</button>
-      <button onClick={fetchGeo}>fetch geo</button>
-      <button onClick={fetchForcast}>fetch forecast</button>
+        <div class="search">
+          <input type="text" onChange={(e) => setCity(e.target.value)} />
+          <Button loading={loading} fetch={fetchCur} city={city} />
+        </div>
+        <div className="dropdown-wrapper">
+          {curData && <Dropbtn fade={fade} data={curData} />}
+        </div>
+
+        {error && <div class={fade}>something went wrong</div>}
+      </div>
     </div>
   );
 }
 
 export default App;
+
+// const fetchForcast = () => {
+//   fetch(
+//     "https://api.openweathermap.org/data/2.5/onecall?lat=41.7151&lon=44.8271&units=metric&appid=5f5fced40cc62d51499dacc3c0ca8151" //onecall
+//   )
+//     .then((res) => res.json())
+//     .then((res) => console.log(res));
+// };
+
+// const fetchGeo = () => {
+//   fetch(
+//     "http://api.openweathermap.org/geo/1.0/direct?q=tbilisi&limit=1&appid=5f5fced40cc62d51499dacc3c0ca8151"
+//   )
+//     .then((res) => res.json())
+//     .then((res) => console.log(res));
+// };
+
+// //date conversion to string
+// const options = {weekday:'long',year:'numeric',month:'long',day:'numeric'}
+// let t = new Date(1648112400 * 1000).toLocaleTimeString("en-US",options)
+// console.log(t);
