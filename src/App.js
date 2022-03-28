@@ -9,13 +9,14 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [curData, setCurData] = useState(null);
-  const [fade, setFade] = useState();
+  const [fade, setFade] = useState("");
 
   const fetchCur = (location) => {
     setTimeout(() => setCurData(null), 1000);
 
     setFade("fadeOut");
-    setError(null);
+    setTimeout(() => setError(null), 1000);
+
     setLoading(true);
     setTimeout(() => {
       fetch(
@@ -29,13 +30,15 @@ function App() {
           setLoading(false);
           setCurData(res);
 
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           setError(err.message);
-          setLoading(false);
         })
-        .finally(() => setFade("fadeIn"));
+        .finally(() => {
+          setLoading(false);
+          setFade("fadeIn");
+        });
     }, 2000);
   };
 
@@ -48,11 +51,11 @@ function App() {
   return (
     <div className="parent">
       <div className="wrapper">
-        {console.log(
+        {/* {console.log(
           new Date(1648112400 * 1000).toLocaleTimeString("en-US", options)
-        )}
+        )} */}
 
-        <div class="search">
+        <div className="search">
           <input type="text" onChange={(e) => setCity(e.target.value)} />
           <Button loading={loading} fetch={fetchCur} city={city} />
         </div>
