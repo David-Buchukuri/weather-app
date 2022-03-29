@@ -17,7 +17,8 @@ body {
 
 .parent {
   background-color: aliceblue;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 100vw;
   justify-content: center;
   align-items: center;
@@ -76,6 +77,10 @@ body {
   animation: fadeOut 1s ease forwards;
 }
 
+.fadeOutBox {
+  animation: fadeOut 0.5s ease forwards;
+}
+
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -93,11 +98,11 @@ body {
 
 @keyframes grow {
   from {
-    height: 0px;
+    height: 0vh;
     /* width: 100%; */
   }
   to {
-    height: 600px;
+    height: 55vh;
     /* width: 1000px; */
   }
 }
@@ -108,12 +113,14 @@ body {
 }
 
 @keyframes shrink {
-  from {
-    height: 400px;
+  0% {
+    height: 55vh;
+
     /* width: 1000px; */
   }
-  to {
-    height: 0px;
+
+  100% {
+    height: 0vh;
     /* width: 100%; */
   }
 }
@@ -136,7 +143,11 @@ body {
   height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  overflow-y: scroll;
+  overflow: auto;
+  padding: 5px;
 }
 
 .App {
@@ -150,19 +161,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+
   width: 50%;
   /* background-color: antiquewhite; */
 }
+.current-info-wrapper p {
+  padding-left: 20px;
+  padding-top: 10px;
+}
 
 .forcast-card {
-  margin-top: 2%;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 28%;
   min-width: 150px;
-  height: 40%;
+  height: 45%;
   /* background-color: rgb(253, 229, 227); */
   border: 1px solid black;
 }
@@ -175,4 +191,33 @@ body {
 
 p {
   text-align: center;
+}
+
+@media only screen and (max-width: 636px) {
+  .card-content-wrapper {
+    justify-content: center;
+  }
+}
+
+.card-content-wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  /* border-radius: 10px; */
+}
+
+.card-content-wrapper::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+.card-content-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.44, rgb(122, 153, 217)),
+    color-stop(0.72, rgb(73, 125, 189)),
+    color-stop(0.86, rgb(28, 58, 148))
+  );
 }

@@ -17,12 +17,16 @@ const DropBtn = ({ data, fade }) => {
       setAngle("rotate(225deg)");
       setTimeout(() => setFadeBox("fadeInBox"), 600);
       setTimeout(() => setLoadContent(true), 600);
+      setTimeout(() => setDisabled(false), 1000);
     } else if (direction === "card-down") {
-      setDirection("card-up");
-      setFadeBox("");
-      setTimeout(() => setOpen(false), 1000);
+      setTimeout(() => setDirection("card-up"), 500);
+
+      setFadeBox("fadeOutBox");
+      setTimeout(() => setOpen(false), 1500);
       setAngle("rotate(45deg)");
-      setLoadContent(false);
+
+      setTimeout(() => setLoadContent(false), 500);
+      setTimeout(() => setDisabled(false), 1500);
     } else {
       setOpen(true);
       setDirection("card-down");
@@ -30,8 +34,8 @@ const DropBtn = ({ data, fade }) => {
 
       setTimeout(() => setLoadContent(true), 600);
       setTimeout(() => setFadeBox("fadeInBox"), 600);
+      setTimeout(() => setDisabled(false), 1000);
     }
-    setTimeout(() => setDisabled(false), 1000);
   };
 
   return (
