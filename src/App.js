@@ -43,8 +43,15 @@ function App() {
     <div className="parent">
       <div className="wrapper">
         <div className="search">
-          <input type="text" onChange={(e) => setCity(e.target.value)} />
-          <Button loading={loading} fetch={fetchCur} city={city} />
+          <div className="searchBar-wrapper">
+            <input
+              placeholder="enter city name..."
+              type="text"
+              onChange={(e) => setCity(e.target.value)}
+            />
+
+            <Button loading={loading} fetch={fetchCur} city={city} />
+          </div>
         </div>
         <div className="dropdown-wrapper">
           {curData && <Dropbtn fade={fade} data={curData} />}

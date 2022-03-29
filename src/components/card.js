@@ -13,8 +13,8 @@ const Card = ({ data, city }) => {
       </div>
       <p>city: {city}</p>
       <p>date: {toDate(data.dt)}</p>
-      <p>day temperature: {data.temp.day}c</p>
-      <p>night temperature: {data.temp.night}c</p>
+      <p>day: {data.temp.day}c</p>
+      <p>night: {data.temp.night}c</p>
       <p>{data.weather[0].description}</p>
     </div>
   );

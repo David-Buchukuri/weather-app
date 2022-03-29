@@ -25,8 +25,8 @@ const Cards = ({ bgCol, direction, loadContent, data, fadeBox }) => {
   }, [data]);
 
   const displayForcast = () => {
-    return forcast.map((el) => {
-      return <Card data={el} city={data.name} />;
+    return forcast.map((el, idx) => {
+      return <Card key={idx} data={el} city={data.name} />;
     });
     // console.log(forcast);
   };
