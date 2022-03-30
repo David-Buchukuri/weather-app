@@ -43,7 +43,7 @@ const Cards = ({ direction, loadContent, data, fadeBox }) => {
   return (
     <div className={`card ${direction}`}>
       {loadContent && (
-        <div className={`card-content-wrapper ${fadeBox}`}>
+        <div className={`card-content-wrapper scroll-bar ${fadeBox}`}>
           {displayForcast()}
         </div>
       )}
