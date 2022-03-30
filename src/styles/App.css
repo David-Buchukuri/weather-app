@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&display=swap");
 
 body {
-  background-color: rgb(37, 36, 36);
+  background-color: aliceblue;
 }
 
 * {
@@ -24,7 +24,6 @@ body {
 }
 
 .parent {
-  background-color: aliceblue;
   min-height: 100vh;
   height: 100%;
   width: 100vw;
@@ -256,7 +255,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
+  height: 40px;
   width: 25vw;
   /* background-color: #f1356d; */
   background-color: #916db8;
@@ -265,12 +264,12 @@ span {
 }
 
 .searchBar-wrapper input {
-  width: 50%;
+  width: 60%;
   border-radius: 5vw;
   border: none;
   outline: none;
   /* height: 50%; */
-  padding: 10px;
+  padding: 7px;
 }
 
 .loading {
@@ -347,4 +346,30 @@ span {
 .display-message {
   font-size: 35px;
   width: 100%;
+}
+
+@media only screen and (max-height: 786px) {
+  .card {
+    height: 30vh;
+  }
+  .dropBtn {
+    margin-bottom: 100px;
+  }
+  .card-content-wrapper {
+    height: 70vh !important;
+  }
+  /* .card {
+    height: 45vh !important;
+  } */
+  .current-info-wrapper {
+    height: 25vh;
+  }
+  .forcast-card {
+    height: 40vh;
+    margin-bottom: 20px;
+  }
+  .current-info-wrapper {
+    flex-direction: row;
+    width: 90%;
+  }
 }
