@@ -337,12 +337,6 @@ span {
 }
 
 @media only screen and (max-height: 920px) {
-  * {
-    font-size: 98%;
-  }
-}
-
-@media only screen and (max-height: 920px) {
   .searchBar-wrapper input {
     padding: 3px;
   }
