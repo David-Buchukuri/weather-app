@@ -30,6 +30,8 @@ body {
   justify-content: center;
   align-items: center;
   display: flex;
+  padding-bottom: 70px;
+  /* box-sizing: border-box; */
 }
 
 .wrapper {
@@ -329,6 +331,9 @@ span {
   .searchBar-wrapper {
     width: 75vw;
   }
+  .current-info-wrapper {
+    width: 70%;
+  }
 }
 
 @media only screen and (max-height: 920px) {
@@ -358,9 +363,7 @@ span {
   .card-content-wrapper {
     height: 70vh !important;
   }
-  /* .card {
-    height: 45vh !important;
-  } */
+
   .current-info-wrapper {
     height: 25vh;
   }
