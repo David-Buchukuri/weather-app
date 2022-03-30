@@ -213,6 +213,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 30%;
 }
 
 p,
@@ -336,6 +337,13 @@ span {
     font-size: 98%;
   }
 }
+
+@media only screen and (max-height: 920px) {
+  .searchBar-wrapper input {
+    padding: 3px;
+  }
+}
+
 .display-message {
   font-size: 35px;
   width: 100%;
