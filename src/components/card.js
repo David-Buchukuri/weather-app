@@ -1,8 +1,6 @@
-const Card = ({ data, city }) => {
-  // //date conversion to string
-  // const options = {weekday:'long',year:'numeric',month:'long',day:'numeric'}
-  const toDate = (time) => new Date(time * 1000).toLocaleDateString();
+import dateConvert from "../utils/dateConvert";
 
+const Card = ({ data, city }) => {
   return (
     <div className="forcast-card">
       <div>
@@ -11,10 +9,14 @@ const Card = ({ data, city }) => {
           alt="icon"
         />
       </div>
-      <p>city: {city}</p>
-      <p>date: {toDate(data.dt)}</p>
-      <p>day: {data.temp.day}c</p>
-      <p>night: {data.temp.night}c</p>
+      <p>{city}</p>
+      <p>{dateConvert(data.dt)}</p>
+      <p>
+        day: <span>{data.temp.day}c</span>
+      </p>
+      <p>
+        night: <span>{data.temp.night}c</span>
+      </p>
       <p>{data.weather[0].description}</p>
     </div>
   );

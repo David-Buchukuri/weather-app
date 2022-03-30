@@ -1,5 +1,6 @@
 import Cards from "./cards";
 import { useState } from "react";
+import dateConvert from "../utils/dateConvert";
 
 const DropBtn = ({ data, fade }) => {
   const [open, setOpen] = useState(false);
@@ -42,8 +43,8 @@ const DropBtn = ({ data, fade }) => {
     <div className={`dropBtn ${fade}`}>
       <div className="current-info-wrapper">
         <p>{data.name}</p>
-        <p>{new Date(data.dt * 1000).toLocaleDateString()}</p>
-        <p>{data.main.temp}c</p>
+        <p>{dateConvert(data.dt)}</p>
+        <span>{data.main.temp}c</span>
         <p>{data.weather[0].description}</p>
         <img
           src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
@@ -60,7 +61,6 @@ const DropBtn = ({ data, fade }) => {
         <Cards
           data={data}
           loadContent={loadContent}
-          bgCol="#DAF7A6"
           direction={direction}
           fadeBox={fadeBox}
         />

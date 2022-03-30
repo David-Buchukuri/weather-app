@@ -6,12 +6,11 @@ const Button = ({ loading, fetch, city }) => {
       className="button"
       disabled={loading}
       onClick={() => {
-        console.log("clicked");
         fetch(city);
       }}
     >
       <img
-        className={`searchImg ${loading ? "spining" : ""}`}
+        className={`searchImg ${loading ? "loading" : ""}`}
         src={mgGlass}
         alt="search"
       />

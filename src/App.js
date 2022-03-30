@@ -19,7 +19,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=5f5fced40cc62d51499dacc3c0ca8151` //standard
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_KEY}` //standard
       )
         .then((res) => {
           if (!res.ok) throw new Error(res.statusText);
@@ -45,7 +45,7 @@ function App() {
         <div className="search">
           <div className="searchBar-wrapper">
             <input
-              placeholder="enter city name..."
+              placeholder="enter city/country..."
               type="text"
               onChange={(e) => setCity(e.target.value)}
             />
@@ -57,7 +57,11 @@ function App() {
           {curData && <Dropbtn fade={fade} data={curData} />}
         </div>
 
-        {error && <div class={fade}>something went wrong</div>}
+        {error && (
+          <p className={`display-message ${fade}`}>
+            something went wrong, try again later 😶
+          </p>
+        )}
       </div>
     </div>
   );
