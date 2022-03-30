@@ -30,7 +30,7 @@ body {
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-bottom: 70px;
+
   /* box-sizing: border-box; */
 }
 
@@ -374,5 +374,8 @@ span {
   .current-info-wrapper {
     flex-direction: row;
     width: 90%;
+  }
+  .parent {
+    padding-bottom: 70px;
   }
 }
