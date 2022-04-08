@@ -10,33 +10,35 @@ function App() {
   const [curData, setCurData] = useState(null);
   const [fade, setFade] = useState("");
 
-  const fetchCur = (location) => {
-    setTimeout(() => setCurData(null), 1000);
+  const fetchCur = (location, e) => {
+    if (e.type === "click" || (e.type === "keypress" && e.code === "Enter")) {
+      setTimeout(() => setCurData(null), 1000);
 
-    setFade("fadeOut");
-    setTimeout(() => setError(null), 1000);
+      setFade("fadeOut");
+      setTimeout(() => setError(null), 1000);
 
-    setLoading(true);
-    setTimeout(() => {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_KEY}` //standard
-      )
-        .then((res) => {
-          if (!res.ok) throw new Error(res.statusText);
-          return res.json();
-        })
-        .then((res) => {
-          setLoading(false);
-          setCurData(res);
-        })
-        .catch((err) => {
-          setError(err.message);
-        })
-        .finally(() => {
-          setLoading(false);
-          setFade("fadeIn");
-        });
-    }, 2000);
+      setLoading(true);
+      setTimeout(() => {
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_KEY}` //standard
+        )
+          .then((res) => {
+            if (!res.ok) throw new Error(res.statusText);
+            return res.json();
+          })
+          .then((res) => {
+            setLoading(false);
+            setCurData(res);
+          })
+          .catch((err) => {
+            setError(err.message);
+          })
+          .finally(() => {
+            setLoading(false);
+            setFade("fadeIn");
+          });
+      }, 2000);
+    }
   };
 
   return (
@@ -48,6 +50,9 @@ function App() {
               placeholder="enter city/country..."
               type="text"
               onChange={(e) => setCity(e.target.value)}
+              onKeyPress={(e) => {
+                fetchCur(city, e);
+              }}
             />
 
             <Button loading={loading} fetch={fetchCur} city={city} />

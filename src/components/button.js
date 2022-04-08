@@ -5,8 +5,8 @@ const Button = ({ loading, fetch, city }) => {
     <button
       className="button"
       disabled={loading || !city}
-      onClick={() => {
-        fetch(city);
+      onClick={(e) => {
+        fetch(city, e);
       }}
     >
       <img
