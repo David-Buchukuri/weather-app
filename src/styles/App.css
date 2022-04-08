@@ -2,6 +2,8 @@
 
 body {
   background-color: aliceblue;
+  /* background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%); */
+  color: black;
 }
 
 * {
@@ -280,6 +282,10 @@ span {
   cursor: default;
 }
 
+.empty {
+  opacity: 0.5;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -300,6 +306,7 @@ span {
   background: none;
   border: none;
   margin-left: 20px;
+  border-radius: 50%;
 }
 
 @media only screen and (max-width: 904px) {
@@ -326,13 +333,13 @@ span {
     height: 45%;
   }
   .wrapper {
-    width: 80vw;
+    width: 90vw;
   }
   .searchBar-wrapper {
     width: 75vw;
   }
   .current-info-wrapper {
-    width: 70%;
+    width: 100%;
   }
 }
 
@@ -374,5 +381,20 @@ span {
   }
   body {
     overflow-x: hidden;
+  }
+  .curreent-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .current-info-wrapper p,
+  span {
+    width: 60px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .current-info-wrapper {
+    height: 32vh;
   }
 }

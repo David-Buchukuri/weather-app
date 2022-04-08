@@ -47,6 +47,7 @@ const DropBtn = ({ data, fade }) => {
         <span>{data.main.temp}c</span>
         <p>{data.weather[0].description}</p>
         <img
+          className="curreent-icon"
           src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
           alt=""
           width="100"

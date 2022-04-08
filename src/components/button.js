@@ -4,13 +4,15 @@ const Button = ({ loading, fetch, city }) => {
   return (
     <button
       className="button"
-      disabled={loading}
+      disabled={loading || !city}
       onClick={() => {
         fetch(city);
       }}
     >
       <img
-        className={`searchImg ${loading ? "loading" : ""}`}
+        className={`searchImg ${loading ? "loading" : ""} ${
+          !city ? "empty" : ""
+        }`}
         src={mgGlass}
         alt="search"
       />
