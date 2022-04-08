@@ -404,6 +404,7 @@ span {
 
   .current-info-wrapper p,
   span {
-    width: 70px;
+    width: 30%;
+    min-width: 70px;
   }
 }
