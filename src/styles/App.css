@@ -382,7 +382,7 @@ span {
   body {
     overflow-x: hidden;
   }
-  .curreent-icon {
+  /* .curreent-icon {
     width: 60px;
     height: 60px;
   }
@@ -390,11 +390,20 @@ span {
   .current-info-wrapper p,
   span {
     width: 60px;
-  }
+  } */
 }
 
 @media only screen and (max-height: 500px) {
   .current-info-wrapper {
     height: 32vh;
+  }
+  .curreent-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .current-info-wrapper p,
+  span {
+    width: 70px;
   }
 }
